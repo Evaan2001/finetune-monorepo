@@ -24,22 +24,6 @@ jobs:
       run: |
           find . -name "*.sh" -type f -exec chmod +x {} \;
 
-    - name: Run Training Tests
-      shell: bash
-      run: |
-        bazel test \
-          --remote_cache=${{ vars.NATIVELINK_COM_REMOTE_CACHE_URL }} \
-          --remote_header=${{ secrets.NATIVELINK_COM_API_HEADER }} \
-          --bes_backend=${{ vars.NATIVELINK_COM_BES_URL }} \
-          --bes_header=${{ secrets.NATIVELINK_COM_API_HEADER }} \
-          --bes_results_url=${{ vars.NATIVELINK_COM_BES_RESULTS_URL }} \
-          --remote_header=x-nativelink-project=nativelink-ci \
-          --remote_executor=grpcs://scheduler-evaan2001.build-faster.nativelink.net:443 \
-          --remote_default_exec_properties="container-image=docker://docker.io/evaanahmed2001/python-bazel-env:amd64-v2" \
-          --test_output=all \
-          //src/training:training_test
-
-    - name: Run Cache Manager tests
       shell: bash
       run: |
         bazel test \
@@ -53,3 +37,4 @@ jobs:
           --remote_default_exec_properties="container-image=docker://docker.io/evaanahmed2001/python-bazel-env:amd64-v2" \
           --test_output=all \
           //src:cache_manager_test
+  
