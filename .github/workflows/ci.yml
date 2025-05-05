@@ -24,7 +24,6 @@ jobs:
       run: |
           find . -name "*.sh" -type f -exec chmod +x {} \;
 
-    - name: Run Cache Manager tests # Run standard tests
       shell: bash
       run: |
         bazel test \
