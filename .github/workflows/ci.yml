@@ -37,7 +37,7 @@ jobs:
           --remote_executor=grpcs://scheduler-evaan2001.build-faster.nativelink.net:443 \
           --remote_default_exec_properties="container-image=docker://docker.io/evaanahmed2001/python-bazel-env:amd64-v2" \
           --test_output=all \
-          //src/training:training_test \
+          //src/training:training_test
 
     - name: Run Cache Manager tests
       shell: bash
